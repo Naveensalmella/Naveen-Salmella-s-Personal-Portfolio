@@ -181,6 +181,21 @@ header {
     margin-bottom: 30px;
 }
 
+#typing-text {
+    color: #00d4ff;
+    /* Use your theme color if different */
+    border-right: 3px solid #00d4ff;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blink .8s infinite;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
 /* ==========================
    BUTTONS
 ========================== */
@@ -1536,4 +1551,172 @@ body::after {
 
 .full {
     color: #00bfff;
+}
+
+/* ==========================
+   HAMBURGER MENU
+========================== */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    z-index: 2000;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+
+@media(max-width:992px) {
+
+    .navbar {
+        padding: 18px 25px;
+        position: relative;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+
+        position: absolute;
+
+        top: 100%;
+
+        left: 0;
+
+        width: 100%;
+
+        background: #08111f;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 25px;
+
+        padding: 25px 0;
+
+        display: none;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .4);
+
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+}
+
+/* Tablet */
+
+@media(max-width:992px) {
+
+    section {
+
+        padding: 70px 6%;
+
+    }
+
+    .container,
+    .about-container,
+    .skills-container,
+    .timeline,
+    .projects-container,
+    .certificate-container,
+    .contact-container {
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+    }
+
+    .timeline::before {
+        left: 393px;
+    }
+
+}
+
+@media(max-width:860px) {
+    .timeline::before {
+        left: 318px;
+    }
+}
+
+@media(max-width:768px) {
+
+    h1 {
+
+        font-size: 2.4rem;
+
+    }
+
+    h2 {
+
+        font-size: 2rem;
+
+    }
+
+    p {
+
+        font-size: 15px;
+
+    }
+
+    img {
+
+        max-width: 100%;
+
+        height: auto;
+
+    }
+
+    .timeline::before {
+
+        left: 20px;
+
+    }
+
+    .timeline-item {
+
+        width: 100%;
+
+        padding-left: 60px;
+
+        padding-right: 0;
+
+    }
+
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+
+        left: 0;
+
+    }
+
+    .timeline-dot {
+
+        left: 10px !important;
+
+    }
+
+}
+
+html {
+    scroll-behavior: smooth;
 }
