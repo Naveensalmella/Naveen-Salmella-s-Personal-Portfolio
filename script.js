@@ -117,3 +117,89 @@ document.addEventListener("DOMContentLoaded", () => {
     revealTimeline();
 
 });
+
+// =========================
+// Hamburger Menu
+// =========================
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+if(hamburger){
+
+    hamburger.addEventListener("click",()=>{
+
+        navLinks.classList.toggle("active");
+
+    });
+
+}
+
+document.querySelectorAll("#navLinks a").forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        navLinks.classList.remove("active");
+
+    });
+
+});
+
+window.addEventListener("resize",()=>{
+
+    if(window.innerWidth>992){
+
+        navLinks.classList.remove("active");
+
+    }
+
+});
+
+
+
+const roles = [
+    "Full Stack Developer",
+    "Content Creator",
+    "Problem Solver"
+];
+
+const typingText = document.getElementById("typing-text");
+
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect(){
+
+    const currentRole = roles[roleIndex];
+
+    if(!deleting){
+
+        typingText.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+
+        if(charIndex === currentRole.length){
+
+            deleting = true;
+            setTimeout(typeEffect, 1800); // Pause after typing
+            return;
+        }
+
+    }else{
+
+        typingText.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+
+        if(charIndex === 0){
+
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+
+        }
+
+    }
+
+    setTimeout(typeEffect, deleting ? 50 : 100);
+}
+
+typeEffect();
